@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kickbacks | Store Locator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="outputLogo.png" />
+  <link
+    href="https://api.mapbox.com/mapbox-gl-js/v3.17.0/mapbox-gl.css"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --accent-green: #b3ff3f;
+      --accent-red: #ff367c;
+      --accent-yellow: #ffe65b;
+      --accent-pink: #ff4b8b;
+      --accent-blue: rgba(15, 174, 238);
+      --bg-dark: #050607;
+      --bg-darker: #020203;
+      --text-light: #ffffff;
+      --text-muted: #c7c7c7;
+      --Undertone-blue: rgba(15, 174, 238);
+      --radius-pill: 999px;
+      --radius-card: 18px;
+      --shadow-soft: 0 18px 36px rgba(0, 0, 0, 0.4);
+      --max-width: 1200px;
+      --scroll: #eaeaea;
+    }
+
+    .results::-webkit-scrollbar {
+      width: 8px;
+    }
+    .results::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 999px;
+    }
+    .results::-webkit-scrollbar-thumb {
+      background: var(--scroll);   /* matches your brand color */
+      border-radius: 999px;
+    }
+    .results::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-pink);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "AZO SANS UBER REG", system-ui, -apple-system, BlinkMacSystemFont,
+        "SF Pro Text", "Segoe UI", sans-serif;
+      background: var(--Undertone-blue);
+      color: var(--text-light);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--accent-blue);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      overflow: visible;
+      background: #ffffff;
+      box-shadow: var(--shadow-soft);
+      object-fit: cover;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    nav li {
+      position: relative;
+      cursor: pointer;
+    }
+
+    nav li::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(
+        90deg,
+        var(--accent-green),
+        var(--accent-pink)
+      );
+      transition: width 0.2s ease-out;
+    }
+
+    nav li:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      border: 2px solid #000000;
+      background: #ffffff;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #000000;
+      text-decoration: none;
+    }
+
+    .nav-cta-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-red);
+      box-shadow: 0 0 16px rgba(179, 255, 63, 0.8);
+    }
+
+    .locator {
+      max-width: var(--max-width);
+      margin: 28px auto;
+      padding: 0 18px 32px;
+      align-items: center;
+    }
+
+    .locator-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .locator-title {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-align: center;
+      width: 100%;
+    }
+
+    .locator-title span {
+      color: var(--bg-dark);
+    }
+
+    .search {
+      position: relative;
+      flex: 1 1 240px;
+      max-width: 420px;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(0, 0, 0, 0.45);
+      color: var(--text-light);
+      font-size: 0.95rem;
+      outline: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .search input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(320px, 380px) minmax(0, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .panel {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-soft);
+      padding: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .results {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow: auto;
+      max-height: 520px;
+      padding-right: 4px;
+    }
+
+    .result-card {
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+      cursor: pointer;
+      transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+    }
+
+    .result-card:hover,
+    .result-card.active {
+      transform: translateY(-2px);
+      border-color: var(--accent-green);
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .result-title {
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+    }
+
+    .result-meta {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    #map {
+      width: 100%;
+      min-height: 520px;
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      background: #0b0d14;
+    }
+
+    #map .map-error {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.65);
+      color: var(--text-light);
+      font-size: 0.95rem;
+      z-index: 2;
+    }
+
+    .mapboxgl-popup {
+      max-width: 260px;
+    }
+
+    .mapboxgl-popup-content {
+      background: rgba(0, 0, 0, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      color: var(--text-light);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .mapboxgl-popup-close-button {
+      color: #ffffff;
+      font-size: 18px;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 999px;
+    }
+
+    .mapboxgl-popup-close-button:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    footer {
+      padding: 28px 16px 40px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 900px) {
+      .nav-inner {
+        flex-wrap: wrap;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      #map {
+        min-height: 360px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner {
+        justify-content: center;
+      }
+
+      .nav-cta {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .results {
+        max-height: 200px;
+      }
+
+      .locator {
+        margin: 0px auto;
+      }
+
+      .result-card {
+        padding: 10px;
+      }
+
+      .result-title {
+        font-size: 0.85rem;
+      }
+
+      .result-meta {
+        font-size: 0.8rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <div class="brand">
+        <img class="brand-mark" src="outputLogo.png" alt="Kickbacks logo" />
+        Kickbacks
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="aboutUs.html">About</a></li>
+          <li><a href="storeLocator.html">Store Locator</a></li>
+        </ul>
+      </nav>
+      <a class="nav-cta" href="storeLocator.html">
+        <span class="nav-cta-dot"></span>
+        Find a Store
+      </a>
+    </div>
+  </header>
+
+  <main class="locator">
+    <div class="locator-header">
+      <h1 class="locator-title">Find Your <span>Kickback!</span></h1>
+      <div class="search">
+        <input id="search" type="text" placeholder="Search city or address" />
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="panel">
+        <div class="results" id="results"></div>
+      </div>
+      <div id="map"></div>
+    </div>
+  </main>
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.17.0/mapbox-gl.js"></script>
+  <script>
+    mapboxgl.accessToken = "pk.eyJ1Ijoic3Rva2UiLCJhIjoiY21qaG1sMzBzMWZvYjNncTN6MmFkY29yayJ9.1Fd7E5YJHlLDIKrAo2v4YA";
+
+    const stores = [
+      {
+        name: "John's Liquor (Our First Buyer)",
+        address: "2428 S Vermont Ave, Los Angeles, CA",
+        coords: [-118.2913, 34.0337],
+      },
+      {
+        name: "Circus Liquors (Part One)",
+        address: "1894 W Jefferson Blvd, Los Angeles, CA",
+        coords: [-118.31156, 34.02849],
+      },
+      {
+        name: "Trojan Liquor",
+        address: "3000 Vermont Ave, Los Angeles, CA",
+        coords: [-118.29116608821879, 34.02739956583891],
+      },
+      {
+        name: "Circus Liquors (Part Two)",
+        address: "2115 W Jefferson Blvd, Los Angeles, CA",
+        coords: [-118.31625, 34.03117],
+      },
+      {
+        name: "Eagle Liquor Market",
+        address: "14844 Magnolia Blvd, Sherman Oaks, CA",
+        coords: [-118.45684, 34.16487],
+      },
+      // {
+      //   name: "Wine & Spirits of The World",
+      //   address: "10318 Reseda Blvd, Porter Ranch, CA",
+      //   coords: [-118.53582, 34.25862],
+      // },
+      {
+        name: "Ace of Spirits",
+        address: "3720 W Olympic Blvd, Los Angeles, CA",
+        coords: [-118.31923, 34.05309],
+      },
+      {
+        name: "Kentwood Liquor",
+        address: "7923 Emerson Ave, Los Angeles, CA",
+        coords: [-118.40643, 33.96955],
+      },
+      {
+        name: "Louie's Liquor (Part One)",
+        address: "596 E Foothill Blvd, Azusa, CA",
+        coords: [-117.90024, 34.13322],
+      },
+      {
+        name: "Louie's Liquor (Part Two)",
+        address: "1230 W Francisquito Ave West Covina, CA",
+        coords: [-117.95358444596684, 34.0520718048596],
+      },
+      {
+        name: "Surf Liquor",
+        address: "2522 Main St, Santa Monica, CA",
+        coords: [-118.48447821550089, 34.00279515787037],
+      },
+      {
+        name: "Beverage House Liquor #25",
+        address: "2413 S Fairview St, Santa Ana, CA",
+        coords: [-117.90730836644553, 33.714873167063516],
+      },
+      {
+        name: "Cee Vee's Liquor & Deli",
+        address: "7750 Palm Ave, Highland, CA",
+        coords: [-117.20956879583919, 34.112802789752976],
+      },
+      {
+        name: "Beverage House Liquor #20",
+        address: "9794 19th St, Rancho Cucamonga, CA",
+        coords: [-117.5916373553638, 34.133079073278],
+      },
+      {
+        name: "21st Amendment Liquor",
+        address: "1555 Fulton Ave Unit A, Sacramento, CA",
+        coords: [-121.40202676160595, 38.59473380939809],
+      },
+      {
+        name: "Beverage House Liquor #6",
+        address: "12120 Ridgecrest Rd, Victorville, CA",
+        coords: [-117.27768535118992, 34.47172136307701],
+      },
+      {
+        name: "Main Street Wine & Spirits",
+        address: "2916 Main St, Santa Monica, CA",
+        coords: [-118.48097502477103, 33.9994295818749],
+      },
+      {
+        name: "Liquor Mart",
+        address: "804 S Anaheim Blvd, Anaheim, CA",
+        coords: [-117.9103765282748, 33.826772727423126],
+      },
+      {
+        name: "Stewarts Liquor",
+        address: "11112 Paramount Blvd, Downey, CA 90241",
+        coords: [-118.13725757367637, 33.943253880935266],
+      }
+    ];
+
+    const mapContainer = document.getElementById("map");
+
+    function showMapError(message) {
+      mapContainer.innerHTML = `<div class="map-error">${message}</div>`;
+    }
+
+    if (!mapboxgl.accessToken || mapboxgl.accessToken.includes("YOUR_MAPBOX_ACCESS_TOKEN")) {
+      showMapError("Add a valid Mapbox access token to view the map.");
+      console.error("Mapbox access token is missing.");
+    }
+
+    let map;
+    try {
+      map = new mapboxgl.Map({
+        container: mapContainer,
+        style: "mapbox://styles/mapbox/streets-v12",
+        center: stores[0].coords,
+        zoom: 10,
+      });
+    } catch (err) {
+      showMapError("Map could not be initialized. Check your token and internet connection.");
+      console.error(err);
+    }
+
+    const resultsEl = document.getElementById("results");
+    const searchEl = document.getElementById("search");
+    let activeMarker = null;
+
+    let markers = [];
+
+    function initMarkers() {
+      if (!map) return;
+      markers = stores.map((store, index) => {
+        const marker = new mapboxgl.Marker({ color: "#ff1a1a" })
+          .setLngLat(store.coords)
+          .setPopup(
+            new mapboxgl.Popup({ offset: 16 }).setHTML(
+              `<strong>${store.name}</strong><br>${store.address}`
+            )
+          )
+          .addTo(map);
+        marker._storeIndex = index;
+        return marker;
+      });
+    }
+
+    map?.on("load", initMarkers);
+    map?.on("error", (e) => {
+      console.error("Mapbox error:", e?.error || e);
+      showMapError("Map tiles failed to load. Please check your token and connection.");
+    });
+
+    function renderList(filtered) {
+      resultsEl.innerHTML = "";
+      filtered.forEach((store, idx) => {
+        const card = document.createElement("div");
+        card.className = "result-card";
+        card.innerHTML = `
+          <div class="result-title">${store.name}</div>
+          <div class="result-meta">${store.address}</div>
+        `;
+        card.addEventListener("click", () => focusStore(store, idx));
+        resultsEl.appendChild(card);
+      });
+    }
+
+    function focusStore(store, idx) {
+      map.flyTo({ center: store.coords, zoom: 12, essential: true });
+      const marker = markers[idx];
+      if (marker) {
+        marker.togglePopup();
+      }
+
+      document.querySelectorAll(".result-card").forEach((el, i) => {
+        el.classList.toggle("active", i === idx);
+      });
+    }
+
+    function filterStores() {
+      const term = searchEl.value.toLowerCase();
+      const filtered = stores
+        .map((store, idx) => ({ store, idx }))
+        .filter(({ store }) =>
+          store.name.toLowerCase().includes(term) ||
+          store.address.toLowerCase().includes(term)
+        );
+      renderList(filtered.map(({ store }) => store));
+    }
+
+    renderList(stores);
+    searchEl.addEventListener("input", filterStores);
+  </script>
+  <img src="https://wadvknj8we.execute-api.us-east-2.amazonaws.com/pixel.gif?page=storelocator" 
+     width="1" height="1" style="display:none;" alt="">
+
+  <footer>
+    Kick Backs Shot + Chaser™ · Drink responsibly. Must be 21+ to enjoy · Vodka Specialties · Bev Tech Inc. Phoenix, AZ | contact@kickbackshots.com</span>
+  </footer>
+</body>
+</html>
