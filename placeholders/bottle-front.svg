@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 560" width="220" height="560">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff"/><stop offset="0.5" stop-color="#e6fbff"/><stop offset="1" stop-color="#9fe0ec"/>
+    </linearGradient>
+  </defs>
+  <!-- PLACEHOLDER: replace with a transparent PNG cut-out of the upright Kickbacks bottle -->
+  <rect x="86" y="8" width="48" height="60" rx="8" fill="#ff1a1a"/>
+  <path d="M86 68 L134 68 L160 130 L160 520 Q160 552 128 552 L92 552 Q60 552 60 520 L60 130 Z" fill="url(#g)" stroke="#0faeee" stroke-width="4"/>
+  <rect x="72" y="200" width="76" height="200" rx="12" fill="#0faeee" opacity="0.9"/>
+  <text x="110" y="290" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#ffffff" letter-spacing="2">KICKBACK</text>
+  <text x="110" y="318" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#ffffff" letter-spacing="3">SHOT + CHASER</text>
+  <text x="110" y="470" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#03556f" letter-spacing="2">BOTTLE FRONT</text>
+  <text x="110" y="488" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#03556f" letter-spacing="1">placeholder</text>
+</svg>

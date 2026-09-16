@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kickbacks Shot + Chaser</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kickbacks Shot + Chaser. Twist, drink, flip. The shot and the chaser in one bottle." />
+  <link rel="icon" href="outputLogo.png" />
+  <link rel="stylesheet" href="index2.css" />
+</head>
+<body>
+
+  <!-- ================= Age gate (same behaviour as index.html) ================= -->
+  <div id="verify-overlay">
+    <div id="verify-dialog">
+      <p>Are you 21 years or older?</p>
+      <div class="form" id="age_gate_min_age" data-min-age="21">
+        <select id="age_gate_day" name="age_gate_day" aria-label="Day">
+          <option selected disabled>Day</option>
+        </select>
+        <select id="age_gate_month" name="age_gate_month" aria-label="Month">
+          <option selected disabled>Month</option>
+          <option value="01">January</option>
+          <option value="02">February</option>
+          <option value="03">March</option>
+          <option value="04">April</option>
+          <option value="05">May</option>
+          <option value="06">June</option>
+          <option value="07">July</option>
+          <option value="08">August</option>
+          <option value="09">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+        <select id="age_gate_year" name="age_gate_year" aria-label="Year">
+          <option selected disabled>Year</option>
+        </select>
+      </div>
+      <button id="verify-yes" class="btn btn-outline">Verify</button>
+    </div>
+  </div>
+
+  <!-- ================= Floating pill navigation ================= -->
+  <div class="site-nav">
+    <div class="nav-pill">
+      <a class="brand" href="index2.html">
+        <img class="brand-mark" src="outputLogo.png" alt="Kickbacks logo" />
+        Kickbacks
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="is-active" href="index2.html">Home</a></li>
+          <li><a href="#flavors">Products</a></li>
+          <li><a href="aboutUs.html">Story</a></li>
+          <li><a href="storeLocator.html">Location</a></li>
+        </ul>
+      </nav>
+      <a class="nav-cta" href="mailto:contact@kickbackshots.com">
+        <span class="nav-cta-dot"></span>
+        Stock Kickbacks
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-mobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="nav-mobile">
+      <div class="nav-mobile-inner">
+        <a class="is-active" href="index2.html">Home</a>
+        <a href="#flavors">Products</a>
+        <a href="aboutUs.html">Story</a>
+        <a href="storeLocator.html">Location</a>
+        <a class="nav-mobile-cta" href="mailto:contact@kickbackshots.com">
+          <span class="nav-cta-dot"></span>
+          Stock Kickbacks
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16V4M4 10l6-6 6 6"/></svg>
+  </button>
+
+  <main>
+
+    <!-- ================= Hero ================= -->
+    <section class="hero">
+      <div class="hero-media">
+        <!-- PLACEHOLDER: QuikShot renders a 3D bottle (three.js) here on desktop.
+             Swap this image for a canvas / WebGL scene or a looping video. -->
+        <div class="hero-media-desktop">
+          <img src="KICKBACK-12.png" alt="" aria-hidden="true" />
+        </div>
+        <!-- PLACEHOLDER: mobile gets a looping video in the original.
+             Drop the file at placeholders/hero-loop.mp4 (or change the src). -->
+        <video class="hero-media-mobile" src="placeholders/hero-loop.mp4" poster="KICKBACK-12.png" autoplay muted loop playsinline></video>
+      </div>
+      <div class="hero-wash"></div>
+
+      <img class="sticker sticker--lg" style="left: 16px; top: 120px;" src="exclamation.png" alt="" aria-hidden="true" />
+      <img class="sticker sticker--lg" style="right: 32px; top: 110px;" src="outputLogo.png" alt="" aria-hidden="true" />
+      <img class="sticker" style="left: 40px; bottom: 96px;" src="outputLogo.png" alt="" aria-hidden="true" />
+      <img class="sticker" style="right: 56px; bottom: 80px;" src="exclamation.png" alt="" aria-hidden="true" />
+
+      <div class="hero-fade"></div>
+
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <span class="section-tag" data-reveal>
+            <span class="section-tag-dot"></span>
+            Want a new way to do shots?
+          </span>
+          <h1 data-reveal>
+            <img class="hero-wordmark" src="KickbackCenterLogo.png" alt="Kickback" />
+            <span class="sr-only">Kickbacks</span>
+          </h1>
+          <p class="hero-strapline" data-reveal>Shot + Chaser. <span>One bottle.</span></p>
+          <p class="hero-sub" data-reveal>
+            Single-serve, ready-to-sip shot and chaser combos that go where the party
+            goes. Twist, drink, flip.
+          </p>
+          <div class="hero-actions" data-reveal>
+            <a class="btn btn-white" href="storeLocator.html">Where to buy</a>
+            <a class="btn btn-primary" href="https://shop.kickbackshots.com/products/kickbacks-shot-chaser%E2%84%A2-vodka-lemon-frost">Buy it here!</a>
+          </div>
+        </div>
+
+        <div class="scroll-hint scroll-hint--mobile">
+          <span>Scroll to explore</span>
+          <div class="scroll-hint-mouse"><span></span></div>
+        </div>
+      </div>
+
+      <div class="scroll-hint scroll-hint--desktop">
+        <span>Scroll to explore</span>
+        <div class="scroll-hint-mouse"><span></span></div>
+      </div>
+    </section>
+
+    <!-- ================= Logo marquee ================= -->
+    <div class="logo-marquee" aria-hidden="true">
+      <div class="marquee-track" id="logo-marquee-track">
+        <!-- Items are duplicated by index2.js so the loop is seamless -->
+        <div class="marquee-item"><img src="outputLogo.png" alt="" /><span>Kickbacks&trade;</span></div>
+        <div class="marquee-item"><img src="exclamation.png" alt="" /><span>Kickbacks&trade;</span></div>
+        <div class="marquee-item"><img src="outputLogo.png" alt="" /><span>Kickbacks&trade;</span></div>
+        <div class="marquee-item"><img src="exclamation.png" alt="" /><span>Kickbacks&trade;</span></div>
+        <div class="marquee-item"><img src="outputLogo.png" alt="" /><span>Kickbacks&trade;</span></div>
+        <div class="marquee-item"><img src="exclamation.png" alt="" /><span>Kickbacks&trade;</span></div>
+      </div>
+    </div>
+
+    <!-- ================= Pour scroll experience =================
+         Scroll-driven, pinned section. index2.js maps the scroll
+         progress of .pour-track (450vh tall) onto every element with a
+         data-pour attribute. See the ASSET PLACEHOLDERS list below. -->
+    <div class="pour-experience">
+      <div class="pour-bg"></div>
+
+      <div class="pour-content">
+        <div class="pour-track" id="pour-track">
+          <section class="pour-stage" aria-label="How to drink a Kickback">
+
+            <div class="pour-blobs">
+              <div class="pour-blob pour-blob--1"></div>
+              <div class="pour-blob pour-blob--2"></div>
+            </div>
+
+            <img class="sticker" style="left: 64px; top: 48px;" src="outputLogo.png" alt="" aria-hidden="true" />
+            <img class="sticker" style="right: 96px; top: 16px;" src="outputLogo.png" alt="" aria-hidden="true" />
+            <img class="sticker" style="left: 32px; bottom: 112px;" src="exclamation.png" alt="" aria-hidden="true" />
+            <img class="sticker sticker--lg" style="right: 32px; bottom: 96px;" src="exclamation.png" alt="" aria-hidden="true" />
+
+            <!-- Interstitial: "What is a Kickback?" -->
+            <div class="pour-intro" data-pour="intro">
+              <!-- ASSET PLACEHOLDER: big headline artwork (QuikShot: wtf-is-a-quikshot.png) -->
+              <img src="placeholders/what-is-a-kickback.svg" alt="What is a Kickback?" />
+            </div>
+
+            <div class="pour-layout">
+              <div class="pour-title" data-pour="title">
+                <h2 class="headline">The first ever <span>shot + chaser</span> in one</h2>
+                <p>Vodka on one side. Lemon frost on the other.</p>
+              </div>
+
+              <div class="pour-arena">
+
+                <!-- SHOT stat card -->
+                <div class="pour-stat pour-stat--shot" data-pour="stat-shot">
+                  <div class="pour-stat-card" id="stat-shot-card">
+                    <p class="pour-stat-label">Shot</p>
+                    <p class="pour-stat-value">1.5oz</p>
+                    <p class="pour-stat-note">French wheat vodka</p>
+                  </div>
+                  <div class="pour-stat-connector">
+                    <div class="pour-stat-line"></div>
+                    <div class="pour-stat-dot" id="stat-shot-dot"></div>
+                  </div>
+                </div>
+
+                <!-- Instruction call-outs -->
+                <!-- ASSET PLACEHOLDER: "take the shot" instruction art (QuikShot: Instructions V1.png) -->
+                <img class="pour-instruction pour-instruction--shot" data-pour="instruction-shot"
+                     src="placeholders/instructions-shot.svg" alt="Take the shot. Drink with the shot side facing you." />
+                <!-- ASSET PLACEHOLDER: "flip for the chaser" instruction art (QuikShot: Instructions V2.png) -->
+                <img class="pour-instruction pour-instruction--chaser" data-pour="instruction-chaser"
+                     src="placeholders/instructions-chaser.svg" alt="Flip the bottle and drink the chaser side." />
+
+                <!-- Bottle -->
+                <div class="pour-bottle-wrap" data-pour="bottle-wrap">
+                  <div class="pour-bottle-float">
+                    <div class="pour-bottle" data-pour="bottle">
+                      <div class="pour-bottle-glow"></div>
+                      <!-- ASSET PLACEHOLDER: upright bottle cut-out with glow (QuikShot: Quikshot blue glow.png) -->
+                      <img src="placeholders/bottle-front.svg" alt="Kickbacks bottle" draggable="false" data-pour="bottle-front" />
+                      <!-- ASSET PLACEHOLDER: bottle after the flip / side view (QuikShot: new_bluebottle_side.png) -->
+                      <img class="pour-bottle-flipped" src="placeholders/bottle-flipped.svg" alt="" draggable="false" data-pour="bottle-flipped" />
+                    </div>
+
+                    <!-- Pour streams (inline SVG, geometry copied from the QuikShot page) -->
+                    <svg class="pour-stream pour-stream--left" data-pour="stream-left" viewBox="0 0 140 240" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path class="pour-fill" d="M74 2 C 66 34, 58 62, 52 96 C 46 130, 36 168, 34 208 C 52 216, 92 216, 110 206 C 104 168, 100 130, 98 96 C 96 62, 92 34, 92 2 Z" fill="rgba(255,255,255,0.55)" stroke="none"/>
+                      <path class="pour-line" d="M74 4 C 66 36, 58 64, 52 98 C 46 132, 36 170, 34 206"/>
+                      <path class="pour-line" d="M92 4 C 92 36, 96 64, 98 98 C 100 132, 104 170, 110 204"/>
+                      <path class="pour-line" d="M82 20 C 78 56, 74 96, 72 140 C 71 168, 70 188, 72 200" opacity="0.55"/>
+                      <path class="pour-line" d="M88 34 C 88 70, 88 108, 90 150" opacity="0.4"/>
+                      <circle cx="26" cy="222" r="6" fill="#ffffff" stroke="none"/>
+                      <circle cx="118" cy="220" r="5" opacity="0.8" fill="#ffffff" stroke="none"/>
+                      <circle cx="60" cy="230" r="3.5" opacity="0.7" fill="#ffffff" stroke="none"/>
+                      <circle cx="92" cy="232" r="3" opacity="0.6" fill="#ffffff" stroke="none"/>
+                      <circle cx="14" cy="206" r="2.6" opacity="0.55" fill="#ffffff" stroke="none"/>
+                    </svg>
+                    <svg class="pour-stream pour-stream--right" data-pour="stream-right" viewBox="0 0 140 240" fill="none" stroke="#bff3ff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path class="pour-fill" d="M74 2 C 66 34, 58 62, 52 96 C 46 130, 36 168, 34 208 C 52 216, 92 216, 110 206 C 104 168, 100 130, 98 96 C 96 62, 92 34, 92 2 Z" fill="rgba(112,204,214,0.65)" stroke="none"/>
+                      <path class="pour-line" d="M74 4 C 66 36, 58 64, 52 98 C 46 132, 36 170, 34 206"/>
+                      <path class="pour-line" d="M92 4 C 92 36, 96 64, 98 98 C 100 132, 104 170, 110 204"/>
+                      <path class="pour-line" d="M82 20 C 78 56, 74 96, 72 140 C 71 168, 70 188, 72 200" opacity="0.55"/>
+                      <path class="pour-line" d="M88 34 C 88 70, 88 108, 90 150" opacity="0.4"/>
+                      <circle cx="26" cy="222" r="6" fill="#bff3ff" stroke="none"/>
+                      <circle cx="118" cy="220" r="5" opacity="0.8" fill="#bff3ff" stroke="none"/>
+                      <circle cx="60" cy="230" r="3.5" opacity="0.7" fill="#bff3ff" stroke="none"/>
+                      <circle cx="92" cy="232" r="3" opacity="0.6" fill="#bff3ff" stroke="none"/>
+                      <circle cx="14" cy="206" r="2.6" opacity="0.55" fill="#bff3ff" stroke="none"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- CHASER stat card -->
+                <div class="pour-stat pour-stat--chaser" data-pour="stat-chaser">
+                  <div class="pour-stat-card" id="stat-chaser-card">
+                    <p class="pour-stat-label">Chaser</p>
+                    <p class="pour-stat-value">1.5oz</p>
+                    <p class="pour-stat-note">Blue frost lemonade</p>
+                  </div>
+                  <div class="pour-stat-connector">
+                    <div class="pour-stat-dot" id="stat-chaser-dot"></div>
+                    <div class="pour-stat-line"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Captions -->
+              <div class="pour-captions">
+                <div class="pour-caption" data-pour="caption-1">
+                  <p class="pour-caption-main">1.5oz shot. 1.5oz chaser. &#x1FA84;</p>
+                  <p class="pour-caption-sub">However... the shot pours first... then the chaser second.</p>
+                </div>
+                <div class="pour-caption" data-pour="caption-2">
+                  <p class="pour-caption-main">Tilt to drink <span>the vodka.</span></p>
+                  <p class="pour-caption-sub">The red side shows the vodka opening.</p>
+                </div>
+                <div class="pour-caption" data-pour="caption-3">
+                  <p class="pour-caption-main">Now tilt for <span>the chaser.</span></p>
+                </div>
+                <div class="pour-caption" data-pour="caption-4">
+                  <p class="pour-caption-main">Now flip <span>the bottle.</span></p>
+                  <p class="pour-caption-sub">The chaser side is now ready to drink.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Tagline after the pour -->
+        <section class="pour-tagline">
+          <p class="line-1" data-reveal>No mixing.</p>
+          <p class="line-2" data-reveal>No afterburn.</p>
+          <p class="line-3" data-reveal>Just twist, drink, flip&trade;</p>
+        </section>
+      </div>
+    </div>
+
+    <!-- ================= Flavors ================= -->
+    <section class="flavors" id="flavors">
+      <img class="sticker" style="left: 12px; top: 12px;" src="outputLogo.png" alt="" aria-hidden="true" />
+      <img class="sticker" style="right: 12px; top: 12px;" src="exclamation.png" alt="" aria-hidden="true" />
+      <img class="sticker" style="left: 12px; bottom: 12px;" src="exclamation.png" alt="" aria-hidden="true" />
+      <img class="sticker" style="right: 12px; bottom: 12px;" src="outputLogo.png" alt="" aria-hidden="true" />
+
+      <div class="flavors-inner">
+        <div class="flavors-header">
+          <span class="section-tag on-light" data-reveal>
+            <span class="section-tag-dot"></span>
+            Our flavors
+          </span>
+          <h2 class="headline" data-reveal>Choose <span>your flavor</span></h2>
+        </div>
+
+        <div class="flavors-grid">
+          <a class="flavor-card flavor-card--berry" href="https://shop.kickbackshots.com/" data-reveal>
+            <div class="flavor-visual">
+              <div class="flavor-glow"></div>
+              <img src="KICKBACK-10.png" alt="Vodka Lemon Berry" loading="lazy" />
+            </div>
+            <div class="flavor-pill">
+              <span>Vodka Lemon Berry</span>
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+            </div>
+          </a>
+          <a class="flavor-card flavor-card--frost" href="https://shop.kickbackshots.com/products/kickbacks-shot-chaser%E2%84%A2-vodka-lemon-frost" data-reveal>
+            <div class="flavor-visual">
+              <div class="flavor-glow"></div>
+              <img src="threeMuskateersGoSkiingZoomedOut.png" alt="Vodka Lemon Frost" loading="lazy" />
+            </div>
+            <div class="flavor-pill">
+              <span>Vodka Lemon Frost</span>
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- ================= Store finder ================= -->
+    <section class="finder" id="finder">
+      <img class="sticker" style="left: 24px; top: 32px;" src="exclamation.png" alt="" aria-hidden="true" />
+      <img class="sticker sticker--lg" style="left: -24px; bottom: 48px;" src="outputLogo.png" alt="" aria-hidden="true" />
+      <img class="sticker sticker--lg" style="right: 16px; top: 24px;" src="outputLogo.png" alt="" aria-hidden="true" />
+      <img class="sticker" style="right: 40px; bottom: 40px;" src="exclamation.png" alt="" aria-hidden="true" />
+
+      <div class="finder-inner">
+        <div class="finder-copy" data-reveal>
+          <span class="section-tag">
+            <span class="section-tag-dot"></span>
+            Store finder
+          </span>
+          <h2 class="headline">Where do I <span>find Kickbacks?</span></h2>
+          <p>We're hitting the best liquor stores, bars &amp; venues. View approved stockists near you.</p>
+          <a class="btn btn-ghost" href="storeLocator.html">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-2.003 3.5-4.697 3.5-8.327a8 8 0 10-16 0c0 3.63 1.556 6.326 3.5 8.327a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.144.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
+            View stores
+          </a>
+        </div>
+        <div class="finder-map" data-reveal>
+          <a class="finder-map-card" href="storeLocator.html">
+            <!-- ASSET PLACEHOLDER: static map preview (QuikShot embeds a live Mapbox map here) -->
+            <img src="placeholders/map-preview.svg" alt="Map preview of Kickbacks stockists" loading="lazy" />
+            <div class="finder-map-footer">
+              <span>View locations</span>
+              <span>View all &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Moments ================= -->
+    <section class="moments" id="moments">
+      <img class="sticker sticker--lg" style="right: 32px; top: 32px;" src="outputLogo.png" alt="" aria-hidden="true" />
+      <img class="sticker sticker--lg" style="left: -16px; bottom: 32px;" src="exclamation.png" alt="" aria-hidden="true" />
+
+      <div class="moments-inner">
+        <span class="section-tag" data-reveal>
+          <span class="section-tag-dot"></span>
+          Who's it for?
+        </span>
+        <h2 class="headline" data-reveal>Built for moments,<br /><span>not demographics.</span></h2>
+        <div class="moments-cloud" id="moments-cloud">
+          <span>Festivals</span>
+          <span class="md">Beaches</span>
+          <span class="lg">Pregames</span>
+          <span class="xl">Pool parties</span>
+          <span class="md">Golf courses</span>
+          <span class="lg">Boats</span>
+          <span>Concerts</span>
+          <span class="md">Tailgates</span>
+          <span class="lg">Clubs</span>
+          <span class="xl">House parties</span>
+          <span class="md">Road trips</span>
+          <span class="lg">Ski trips</span>
+          <span>Airbnb's</span>
+          <span class="md">Weddings</span>
+          <span class="lg">Camping</span>
+          <span class="xl">Game day</span>
+          <span class="md">Stadiums &amp; sporting events</span>
+          <span class="lg">Picnics</span>
+          <span>BYO spots</span>
+          <span class="md">Outdoor hangouts</span>
+          <span class="lg">College nights</span>
+        </div>
+      </div>
+
+      <div class="polaroid-marquee" aria-hidden="true">
+        <div class="marquee-track" id="polaroid-marquee-track">
+          <div class="polaroid"><img src="hotGirlsCoachella.png" alt="" loading="lazy" /></div>
+          <div class="polaroid"><img src="jb.png" alt="" loading="lazy" /></div>
+          <div class="polaroid"><img src="maxPolaroid.JPG" alt="" loading="lazy" /></div>
+          <div class="polaroid"><img src="samWork.png" alt="" loading="lazy" /></div>
+          <div class="polaroid"><img src="hotGirlsCoachella2.png" alt="" loading="lazy" /></div>
+          <div class="polaroid"><img src="tahoe.png" alt="" loading="lazy" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Get in touch ================= -->
+    <section class="contact" id="contact">
+      <div class="contact-inner">
+        <div class="contact-card">
+          <img src="KICKBACK-1.png" alt="" aria-hidden="true" loading="lazy" />
+          <div class="contact-shade"></div>
+          <div class="contact-body">
+            <div data-reveal>
+              <h2 class="contact-title">Get in<br />touch</h2>
+              <span class="contact-tape">Now shipping nationwide</span>
+            </div>
+            <div class="contact-footer" data-reveal>
+              <p class="contact-blurb">
+                Building America's<br />
+                <span>next biggest</span> shot brand
+              </p>
+              <a class="contact-cta" href="mailto:contact@kickbackshots.com">
+                <span class="contact-cta-icon">
+                  <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"/></svg>
+                </span>
+                <span>
+                  <small>We're open to</small>
+                  <strong>Partnerships &rarr;</strong>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= Footer ================= -->
+  <footer>
+    <img class="sticker sticker--lg" style="left: -32px; top: -40px;" src="outputLogo.png" alt="" aria-hidden="true" />
+    <img class="sticker sticker--lg" style="right: -24px; bottom: 0;" src="exclamation.png" alt="" aria-hidden="true" />
+
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="kickback.png" alt="Kickback" />
+        <nav class="footer-links" aria-label="Footer">
+          <p class="footer-links-title">Quick links</p>
+          <a href="index2.html">Home</a>
+          <a href="#flavors">Products</a>
+          <a href="aboutUs.html">Story</a>
+          <a href="storeLocator.html">Where to buy</a>
+          <a href="mailto:contact@kickbackshots.com">Stock Kickbacks</a>
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">Be the first to know</p>
+        <form class="footer-form" id="newsletter-form" novalidate>
+          <label class="sr-only" for="newsletter-email">Email address</label>
+          <input id="newsletter-email" type="email" placeholder="Enter your email" autocomplete="email" required />
+          <button type="submit" aria-label="Subscribe">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </button>
+        </form>
+        <p class="footer-form-note" id="newsletter-note" aria-live="polite"></p>
+      </div>
+
+      <div class="footer-col footer-col--social">
+        <p class="footer-col-title">Follow us</p>
+        <div class="social-row">
+          <a class="social-circle" href="https://www.instagram.com/kickbackshots/" target="_blank" rel="noopener noreferrer" aria-label="Kickbacks on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a class="social-circle" href="https://www.tiktok.com/@kickbackshots/" target="_blank" rel="noopener noreferrer" aria-label="Kickbacks on TikTok">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; Kick Backs Shot + Chaser&trade; &middot; Bev Tech Inc. Phoenix, AZ &middot; contact@kickbackshots.com</span>
+      <span>Drink responsibly. Must be 21+ to enjoy.</span>
+    </div>
+  </footer>
+
+  <script src="index2.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" width="900" height="260">
+  <!-- PLACEHOLDER: replace with the big "What is a Kickback?" headline artwork -->
+  <rect x="4" y="4" width="892" height="252" rx="36" fill="rgba(0,0,0,0.35)" stroke="#ffffff" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="12 10"/>
+  <text x="450" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-size="78" font-weight="900" fill="#ffffff" letter-spacing="6">WHAT IS A</text>
+  <text x="450" y="206" text-anchor="middle" font-family="system-ui, sans-serif" font-size="92" font-weight="900" fill="#8ee110" letter-spacing="8">KICKBACK?</text>
+  <text x="450" y="240" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#c7c7c7" letter-spacing="3">HEADLINE ART PLACEHOLDER</text>
+</svg>
