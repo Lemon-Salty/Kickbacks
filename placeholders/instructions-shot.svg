@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" width="420" height="260">
+  <!-- PLACEHOLDER: replace with the "take the shot" instruction artwork -->
+  <rect x="4" y="4" width="412" height="252" rx="28" fill="rgba(0,0,0,0.45)" stroke="#ffffff" stroke-opacity="0.35" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="210" y="70" text-anchor="middle" font-family="system-ui, sans-serif" font-size="30" font-weight="800" fill="#8ee110" letter-spacing="4">TAKE THE SHOT</text>
+  <text x="210" y="112" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff" letter-spacing="2">DRINK WITH THE SHOT SIDE FACING YOU</text>
+  <path d="M120 190 C 160 150, 260 150, 300 190" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M286 176 L300 190 L282 196" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="210" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#c7c7c7" letter-spacing="2">INSTRUCTION ART PLACEHOLDER</text>
+</svg>

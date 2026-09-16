@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 300" width="460" height="300">
+  <!-- PLACEHOLDER: replace with a static map screenshot or an embedded map -->
+  <defs>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0 L0 0 0 30" fill="none" stroke="#cfe9ee" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="460" height="300" fill="#eef8fa"/>
+  <rect width="460" height="300" fill="url(#grid)"/>
+  <path d="M0 120 C 120 90, 200 170, 320 130 S 460 150, 460 150" fill="none" stroke="#b6dde5" stroke-width="10" stroke-linecap="round"/>
+  <path d="M90 0 C 110 90, 60 180, 130 300" fill="none" stroke="#b6dde5" stroke-width="8" stroke-linecap="round"/>
+  <path d="M300 0 C 280 110, 360 190, 330 300" fill="none" stroke="#b6dde5" stroke-width="8" stroke-linecap="round"/>
+  <g fill="#ff1a1a">
+    <circle cx="150" cy="110" r="9"/><circle cx="240" cy="160" r="9"/><circle cx="330" cy="95" r="9"/><circle cx="200" cy="230" r="9"/><circle cx="360" cy="210" r="9"/>
+  </g>
+  <g fill="#ffffff"><circle cx="150" cy="110" r="3.5"/><circle cx="240" cy="160" r="3.5"/><circle cx="330" cy="95" r="3.5"/><circle cx="200" cy="230" r="3.5"/><circle cx="360" cy="210" r="3.5"/></g>
+  <text x="230" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#03556f" letter-spacing="3">MAP PREVIEW PLACEHOLDER</text>
+</svg>
